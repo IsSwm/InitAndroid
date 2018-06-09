@@ -1,15 +1,12 @@
 package com.jjj.jiatingfuwuqkl.utils
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 
-/**
- * @author MaTianyu
- * *
- * @date 2014-07-31
- */
+
+@SuppressLint("StaticFieldLeak")
 object SwmToastUtils {
 
     private var mToast: Toast? = null
@@ -17,7 +14,7 @@ object SwmToastUtils {
 
 
     //  获取 一个单独的toast
-    fun getSingletonToast(resId: Int): Toast {
+    private fun getSingletonToast(resId: Int): Toast {
         if (mToast == null) {
             mToast = Toast.makeText(context, resId, Toast.LENGTH_SHORT)
         } else {
@@ -26,7 +23,7 @@ object SwmToastUtils {
         return mToast!!
     }
 
-    fun getSingletonToast(text: String): Toast {
+    private fun getSingletonToast(text: String): Toast {
         if (mToast == null) {
             mToast = Toast.makeText(context, text, Toast.LENGTH_SHORT)
         } else {
@@ -35,7 +32,7 @@ object SwmToastUtils {
         return mToast!!
     }
 
-    fun getSingleLongToast(resId: Int): Toast {
+    private fun getSingleLongToast(resId: Int): Toast {
         if (mToast == null) {
             mToast = Toast.makeText(context, resId, Toast.LENGTH_LONG)
         } else {
@@ -44,7 +41,7 @@ object SwmToastUtils {
         return mToast!!
     }
 
-    fun getSingleLongToast(text: String): Toast {
+    private fun getSingleLongToast(text: String): Toast {
         if (mToast == null) {
             mToast = Toast.makeText(context, text, Toast.LENGTH_LONG)
         } else {
@@ -53,19 +50,19 @@ object SwmToastUtils {
         return mToast!!
     }
 
-    fun getToast(resId: Int): Toast {
+    private fun getToast(resId: Int): Toast {
         return Toast.makeText(context, resId, Toast.LENGTH_SHORT)
     }
 
-    fun getToast(text: String): Toast {
+    private fun getToast(text: String): Toast {
         return Toast.makeText(context, text, Toast.LENGTH_SHORT)
     }
 
-    fun getLongToast(resId: Int): Toast {
+    private fun getLongToast(resId: Int): Toast {
         return Toast.makeText(context, resId, Toast.LENGTH_LONG)
     }
 
-    fun getLongToast(text: String): Toast {
+    private fun getLongToast(text: String): Toast {
         return Toast.makeText(context, text, Toast.LENGTH_LONG)
     }
 
