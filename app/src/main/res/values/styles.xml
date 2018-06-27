@@ -8,4 +8,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- 没有title theme. -->
+    <style name="NoTitleTheme" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!-- 全屏 theme. -->
+    <style name="FullScreenTheme" parent="NoTitleTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <!-- 分割线 默认高度1dp  使用 " <View style="@style/divider_view" /> "-->
+    <style name="divider_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_1</item>
+        <item name="android:background">@color/gray</item>
+    </style>
+
 </resources>

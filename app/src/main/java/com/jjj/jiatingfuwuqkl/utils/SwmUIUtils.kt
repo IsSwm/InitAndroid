@@ -34,12 +34,10 @@ class SwmUIUtils {
         val context: Context
             get() = AppContext.context!!
 
-
         //    -----------------  自定义方法  -----------------
 
 
         //    -----------------  加载资源文件  -------------------
-
 
         /**
          * 获取类型数组  自定义属性信息
@@ -50,20 +48,6 @@ class SwmUIUtils {
             return context.obtainStyledAttributes(attributeSet, attr, 0, 0)
         }
 
-        //    获取 整数资源
-        fun getInteger(@IntegerRes resId: Int): Int {
-            return context.resources.getInteger(resId)
-        }
-
-        //    获取字符串
-        fun getString(id: Int): String {
-            return context.resources.getString(id)
-        }
-
-        //      获取字符串数组
-        fun getStringArray(id: Int): Array<String> {
-            return context.resources.getStringArray(id)
-        }
 
         //    获取 图片资源
         fun getDrawable(id: Int): Drawable {
@@ -97,17 +81,6 @@ class SwmUIUtils {
             return context.resources.getDimensionPixelSize(id)
         }
 
-        //    获取通知栏的高度
-        //            getDimensionPixelSize 四舍五入  offset  直接舍去  getDimension  原来的摸样精确度高
-        val stasusBarHeight: Float
-            get() {
-                val identifier = context.resources.getIdentifier("status_bar_height", "dimen", "android")
-                if (identifier > 0) {
-                    return context.resources.getDimensionPixelSize(identifier).toFloat()
-                }
-                throw RuntimeException("获取不到通知栏的高度")
-            }
-
         //    dp 和 px 之间的转换
         fun dp2px(dip: Float): Int {
             val density = context.resources.displayMetrics.density
@@ -121,7 +94,6 @@ class SwmUIUtils {
 
         /**
          * sp2px
-
          * @param spVal
          * *
          * @return

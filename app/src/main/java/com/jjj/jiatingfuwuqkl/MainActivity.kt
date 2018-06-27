@@ -1,43 +1,50 @@
 package com.jjj.jiatingfuwuqkl
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.jjj.jiatingfuwuqkl.entity.BaseData
+import com.jjj.jiatingfuwuqkl.fragment.home.FragmentHome
 import com.jjj.jiatingfuwuqkl.utils.SwmRxHttpUtils
 import com.jjj.jiatingfuwuqkl.utils.SwmRxHttpUtils.SwmIsRequestComListener
-import com.jjj.jiatingfuwuqkl.utils.SwmToastUtils
+import com.jjj.moneybag.activity.BaseActivity
+import com.ycl.tabview.library.TabViewChild
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val swmRxHttpUtils = SwmRxHttpUtils(object : SwmIsRequestComListener {
             override fun onSubscribe(d: Disposable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
 
             override fun onNext(baseData: BaseData) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onError(e: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onComplete() {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
-
         })
-        textview.setOnClickListener {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            SwmToastUtils.showToast("123")
-        }
-
-
+        initArgs()
     }
+    private fun initArgs() {
+        val tabViewChildList = ArrayList<TabViewChild>()
+        val tabViewChild01 = TabViewChild(R.mipmap.tab_home_sel, R.mipmap.tab_home_unsel, "PopupWindow", FragmentHome.newInstance())
+//        val tabViewChild02 = TabViewChild(R.mipmap.tab_home_sel, R.mipmap.tab_home_unsel,"" , FragmentWallet.newInstance())
+//        val tabViewChild03 = TabViewChild(R.mipmap.tab_home_sel, R.mipmap.tab_home_unsel, , FragmentRecord.newInstance())
+//        val tabViewChild04 = TabViewChild(R.mipmap.tab_home_sel, R.mipmap.tab_home_unsel, , FragmentUser.newInstance())
+
+
+        tabViewChildList.add(tabViewChild01)
+//        tabViewChildList.add(tabViewChild02)
+//        tabViewChildList.add(tabViewChild03)
+//        tabViewChildList.add(tabViewChild04)
+        tabView.setTabViewChild(tabViewChildList, supportFragmentManager)
+    }
+
 
 }

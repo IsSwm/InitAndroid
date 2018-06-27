@@ -2,8 +2,6 @@ package com.jjj.jiatingfuwuqkl
 
 import android.app.Application
 import android.content.Context
-import android.os.Handler
-import android.os.Process
 import com.jjj.jiatingfuwuqkl.api.ApiService
 import com.parkingwang.okhttp3.LogInterceptor.LogInterceptor
 import okhttp3.OkHttpClient
@@ -13,10 +11,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
- * App 上下文环境
- *
- *
- * Created by Tony on 9/30/15.
+ * Created by SwmIsMe on 2016/8/25.
+ * NOTICE!!!
+ * 一定要在 AndroidManifest.xml  文件下的
+ * <application     标签添加  name  属性  否则获取不到
+ * android:name=".AppContext"
  */
 class AppContext : Application() {
     private val PROTOCOL = "http://"
@@ -25,14 +24,10 @@ class AppContext : Application() {
     //    端口部分(可省略)：跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。端口不是一个URL必须的部分，如果省略端口部分，将采用默认端口
     private val HOST = IP_DOMAIN + "SwmSignPhp/public/index/"
 
-
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
-        handler = Handler()
-        //  		import android.os.Process;  有两个包需要导入这个包
-        mainThreadId = Process.myTid()
-        //        初始化  网络 请求的
+        //   初始化  网络 请求的
         initOkHttpAndRetrofit()
     }
 
@@ -46,9 +41,9 @@ class AppContext : Application() {
                 .build()
         //        配置 retrofit
         val retrofit = Retrofit.Builder()
-                //                添加 okhttp
+                //  添加 okhttp
                 .client(okHttpClient)
-                //                基本网址
+                //   基本网址
                 .baseUrl(HOST)
                 //                 请求数据 转换器 gson
                 .addConverterFactory(GsonConverterFactory.create())
@@ -60,10 +55,7 @@ class AppContext : Application() {
     }
 
     companion object {
-
-        var handler: Handler? = null
-        var mainThreadId: Int = 0
-        var context: Context? = null
+         var context: Context? = null
         //    返回 创建好的 ApiService
         var apiService: ApiService? = null
     }

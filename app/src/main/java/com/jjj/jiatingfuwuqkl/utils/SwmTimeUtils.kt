@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /**
- * Created by IsSwm on 2017/3/15.
  * 时间转换工具
+ * 获取日期等
  */
 
 object SwmTimeUtils {
@@ -74,7 +74,6 @@ object SwmTimeUtils {
     /**
      * 获取 月 和 日
      * @param time
-     * *
      * @return
      */
     fun getMonDay(time: Long): String {
@@ -86,9 +85,6 @@ object SwmTimeUtils {
 
     /**
      * 获取 当前的 日期 几号
-
-     * @param time
-     * *
      * @return
      */
     val nowDay: Int

@@ -5,7 +5,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 
-
+/**
+ * Toast
+ */
 @SuppressLint("StaticFieldLeak")
 object SwmToastUtils {
 

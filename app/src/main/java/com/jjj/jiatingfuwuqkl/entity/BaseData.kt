@@ -4,13 +4,9 @@ package com.jjj.jiatingfuwuqkl.entity
  * Created by Administrator on 2017/4/11.
  */
 
-class BaseData {
+open class BaseData {
 
-    var message: String
-        get() = ""
-        set(msg) {}
+    lateinit var message: String
 
-    var status: String
-        get() = "error"
-        set(Status) {}
+    lateinit var status: String
 }

@@ -9,12 +9,11 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 /**
- * Created by 九贡 on 2017/10/8.
+ * 网络请求 基于 retrofit 与 rxjava
  */
-
 class SwmRxHttpUtils
 /**
- * 请求完成做的事情
+ * 请求中返回的各种接口
  * @param swmIsRequestComListener
  */
 (swmIsRequestComListener: SwmIsRequestComListener) {
@@ -25,28 +24,40 @@ class SwmRxHttpUtils
         mBaseDataObserver = object : Observer<BaseData> {
 
             private var mDisposable: Disposable? = null
-
+            /**
+             * 可以在此做一些初始化操作，应该是这样的。
+             */
             override fun onSubscribe(d: Disposable) {
                 mDisposable = d
                 swmIsRequestComListener.onSubscribe(d)
             }
 
+            /**
+             * 请求返回的数据 封装的基类
+             *  status 判断可根据你亲爱的服务器大神的返回~
+             */
             override fun onNext(baseData: BaseData) {
-                //                如果 服务器 返回的  请求 状态码 等于success 代码有数据
+                //    如果 服务器 返回的  请求 状态码 等于success 代码有数据
                 if ("success" == baseData.status) {
                     swmIsRequestComListener.onNext(baseData)
                 } else {
-                    //                    显示服务器的错误信息
+                    //   显示服务器的错误信息
                     SwmToastUtils.showToast(baseData.message)
                 }
             }
 
+            /**
+             * 请求失败返回的信息
+             */
             override fun onError(e: Throwable) {
                 SwmToastUtils.showToast("未连接到服务器,错误信息：" + e.message)
                 mDisposable!!.dispose()
                 swmIsRequestComListener.onError(e)
             }
 
+            /**
+             * 整个请求完成调用，成功or失败都会走的路~
+             */
             override fun onComplete() {
                 mDisposable!!.dispose()
                 swmIsRequestComListener.onComplete()

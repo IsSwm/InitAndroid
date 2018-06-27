@@ -7,10 +7,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.ycl.tabview.library.TabView
-        android:id="@+id/tabView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.ycl.tabview.library.TabView>
+    <include layout="@layout/global_header" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_15"
+        android:text="点我弹出"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
