@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/dp_5"
-    >
-    <!--  android:visibility="gone" -->
+    android:padding="@dimen/dp_5">
+
     <ImageView
         android:id="@+id/header_back"
-        android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dp_5"
+        android:layout_centerVertical="true"
         android:background="@mipmap/arrow_left"
-        />
+        android:padding="@dimen/dp_5"
+        android:visibility="gone" />
+
     <TextView
         android:id="@+id/header_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="标题"
-        />
-    <!--  android:visibility="gone" -->
+        android:text="标题" />
+
     <TextView
         android:id="@+id/header_btn"
-        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
         android:text="保存"
-        />
+        android:visibility="gone" />
 </RelativeLayout>
