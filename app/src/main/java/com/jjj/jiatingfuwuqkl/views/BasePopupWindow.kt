@@ -76,7 +76,7 @@ class BasePopupWindow(private val context: Context) : PopupWindow() {
         isFocusable = true
     }
 
-    fun setView(adapter:Adapter<BaseViewHolder>) {
+    fun setView(adapter:Adapter<*>) {
         val recyclerView = RecyclerView(context)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
@@ -84,6 +84,7 @@ class BasePopupWindow(private val context: Context) : PopupWindow() {
         contentView = recyclerView
         isFocusable = true
     }
+
 
     override fun showAtLocation(parent: View, gravity: Int, x: Int, y: Int) {
         super.showAtLocation(parent, gravity, x, y)

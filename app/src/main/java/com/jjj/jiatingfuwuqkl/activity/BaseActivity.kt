@@ -1,6 +1,8 @@
 package com.jjj.moneybag.activity
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 
@@ -18,4 +20,9 @@ open class BaseActivity : AppCompatActivity() {
         view.visibility = View.VISIBLE
         view.setOnClickListener(clickListener)
     }
+
+    fun mStartActivity(packageContext: Context, cls:Class<*> ){
+        packageContext.startActivity(Intent(packageContext, cls))
+    }
+
 }
