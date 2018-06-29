@@ -6,9 +6,9 @@
 ![](https://github.com/IsSwm/InitAndroid/blob/master/read/img/global_header.png)
 [global_header.xml](https://github.com/IsSwm/InitAndroid/blob/master/app/src/main/res/layout/global_header.xml)
 
-实战调用在activity中,方法封装在[BaseActivity中查看](https://github.com/IsSwm/InitAndroid/blob/master/app/src/main/java/com/jjj/initandroid/activity/BaseActivity.kt):
+实战调用在activity中,方法封装在[BaseActivity中查看](https://github.com/IsSwm/InitAndroid/blob/master/app/src/main/java/com/jjj/initandroid/activity/BaseActivity.kt)：
 ```
-// 设置顶部内容
+        // 设置顶部内容
         setTitle("顶部Demo演示")
         // 退出activity
         setBackBtnFinish()
