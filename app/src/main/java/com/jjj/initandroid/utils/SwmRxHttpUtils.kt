@@ -2,23 +2,32 @@ package com.jjj.initandroid.utils
 
 import com.jjj.initandroid.AppContext
 import com.jjj.initandroid.entity.BaseData
+import com.jjj.moneybag.utils.FileUtil
 
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * 网络请求 基于 retrofit 与 rxjava
  */
-class SwmRxHttpUtils
-/**
- * 请求中返回的各种接口
- * @param swmIsRequestComListener
- */
-(swmIsRequestComListener: SwmIsRequestComListener) {
+class SwmRxHttpUtils {
 
     private val mBaseDataObserver: Observer<BaseData>
+    constructor()
+
+    /**
+     * 请求完成做的事情
+     * @param swmRequestComListener
+     */
+    constructor(swmRequestComListener: SwmRequestComListener) {
+        this.swmRequestComListener = swmRequestComListener
+    }
 
     init {
         mBaseDataObserver = object : Observer<BaseData> {
@@ -29,7 +38,7 @@ class SwmRxHttpUtils
              */
             override fun onSubscribe(d: Disposable) {
                 mDisposable = d
-                swmIsRequestComListener.onSubscribe(d)
+                swmRequestComListener!!.onSubscribe(d)
             }
 
             /**
@@ -39,7 +48,7 @@ class SwmRxHttpUtils
             override fun onNext(baseData: BaseData) {
                 //    如果 服务器 返回的  请求 状态码 等于success 代码有数据
                 if ("success" == baseData.status) {
-                    swmIsRequestComListener.onNext(baseData)
+                    swmRequestComListener!!.onNext(baseData)
                 } else {
                     //   显示服务器的错误信息
                     SwmToastUtils.showToast(baseData.message)
@@ -52,7 +61,7 @@ class SwmRxHttpUtils
             override fun onError(e: Throwable) {
                 SwmToastUtils.showToast("未连接到服务器,错误信息：" + e.message)
                 mDisposable!!.dispose()
-                swmIsRequestComListener.onError(e)
+                swmRequestComListener!!.onError(e)
             }
 
             /**
@@ -60,13 +69,11 @@ class SwmRxHttpUtils
              */
             override fun onComplete() {
                 mDisposable!!.dispose()
-                swmIsRequestComListener.onComplete()
+                swmRequestComListener!!.onComplete()
             }
         }
 
     }
-
-
     //    private static class singleInstance {
     //        public static final SwmRxHttpUtils instance = new SwmRxHttpUtils();
     //    }
@@ -90,14 +97,30 @@ class SwmRxHttpUtils
         return this
     }
 
-    //    设置 请求完成 的 接口。
-    private var mSwmIsRequestComListener: SwmIsRequestComListener? = null
+    /**
+     *  下载文件
+     */
+    fun downloadFile(url:String): SwmRxHttpUtils {
+        AppContext.apiService!!.downloadFile(url).enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
+                val byteStream = response!!.body()!!.byteStream()
+                val totalLength = response.body()!!.contentLength()
+                FileUtil().write2SDFromInput("", SwmSystemUtils.appVersion + ".apk", byteStream, totalLength)
 
-    fun setSwmIsRequestComListener(swmIsRequestComListener: SwmIsRequestComListener) {
-        mSwmIsRequestComListener = swmIsRequestComListener
+            }
+
+            override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+            }
+
+        })
+        return this
     }
 
-    interface SwmIsRequestComListener {
+    //    设置 请求完成 的 接口。
+    private var swmRequestComListener: SwmRequestComListener? = null
+
+
+    interface SwmRequestComListener {
         fun onSubscribe(d: Disposable)
 
         fun onNext(baseData: BaseData)

@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.jjj.initandroid.entity.BaseData
 import com.jjj.initandroid.fragment.first.FragmentFirst
 import com.jjj.initandroid.utils.SwmRxHttpUtils
-import com.jjj.initandroid.utils.SwmRxHttpUtils.SwmIsRequestComListener
+import com.jjj.initandroid.utils.SwmRxHttpUtils.SwmRequestComListener
 import com.jjj.moneybag.activity.BaseActivity
 import com.ycl.tabview.library.TabViewChild
 import io.reactivex.disposables.Disposable
@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val swmRxHttpUtils = SwmRxHttpUtils(object : SwmIsRequestComListener {
+        val swmRxHttpUtils = SwmRxHttpUtils(object : SwmRequestComListener {
             override fun onSubscribe(d: Disposable) {
 
             }
