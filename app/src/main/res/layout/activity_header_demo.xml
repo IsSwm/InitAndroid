@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jjj.initandroid.activity.first.HeaderDemoActivity">
+    tools:context="com.mecm.initandroid.activity.first.HeaderDemoActivity">
 
     <include layout="@layout/global_header" />
 </android.support.constraint.ConstraintLayout>

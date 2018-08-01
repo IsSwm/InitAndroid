@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion "28.0.0"
     defaultConfig {
-        applicationId "com.jjj.jiatingfuwuqkl"
+        applicationId "com.mecm.initandroid"
         minSdkVersion 14
         targetSdkVersion 28
         versionCode rootProject.ext.versionCode
@@ -50,4 +50,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
 //    简化recyclerViewAdapter https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+
+//    https://github.com/Bigkoo/Android-PickerView  时间库
+    compile 'com.contrarywind:Android-PickerView:4.1.6'
 }
