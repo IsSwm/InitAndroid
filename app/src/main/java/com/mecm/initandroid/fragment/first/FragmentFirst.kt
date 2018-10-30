@@ -36,7 +36,7 @@ class FragmentFirst : FragmentCommon() {
         view.home_rv.layoutManager = LinearLayoutManager(context)
         val homeAdapter = HomeAdapter(homeData)
         view.home_rv.adapter = homeAdapter
-        homeAdapter.setOnItemClickListener { adapter, view, position ->
+        homeAdapter.setOnItemClickListener { _, _, position ->
             when (position) {
                 //  头部Demo演示
                 POSITION_HEADER -> mStartActivity(context!!, HeaderDemoActivity::class.java)

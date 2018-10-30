@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoTitleTheme"
+        tools:replace="android:theme"
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data
             android:name="design_width"
@@ -28,7 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.mecm.initandroid.activity.first.HeaderDemoActivity"></activity>
+        <activity android:name="com.mecm.initandroid.activity.first.HeaderDemoActivity" />
+        <activity android:name=".activity.html.BaseWebActivity" />
     </application>
 
 </manifest>
