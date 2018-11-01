@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jjj.jiatingfuwuqkl.utils.SwmUser
 import com.mecm.initandroid.R
 import kotlinx.android.synthetic.main.fragment_common.view.*
+import org.json.JSONObject
 
 open class FragmentCommon : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -17,10 +19,30 @@ open class FragmentCommon : Fragment(){
         return view
     }
 
+
     // 启动activity 使用 mStartActivity(context,*::class.java)
-    fun mStartActivity(packageContext: Context, cls:Class<*> ){
-        packageContext.startActivity(Intent(packageContext, cls))
+    fun mStartActivity(cls: Class<*>) {
+        context!!.startActivity(Intent(context, cls))
     }
+
+    // 启动activity 使用 mStartActivity(context,*::class.java)
+    fun mStartActivity(cls: Class<*>, url: String, param: String) {
+        val intent = Intent(context, cls)
+        intent.putExtra("url", url)
+        intent.putExtra("params", param)
+        context!!.startActivity(intent)
+    }
+
+
+    // 启动activity 使用 mStartActivity(context,*::class.java)
+    fun mStartActivity(cls: Class<*>, url: String, param: JSONObject) {
+        param.put("token", SwmUser.getUser(context!!))
+        val intent = Intent(context, cls)
+        intent.putExtra("url", url)
+        intent.putExtra("params", param.toString())
+        this.startActivity(intent)
+    }
+
 
     companion object {
         fun newInstance(text: String): FragmentCommon {
