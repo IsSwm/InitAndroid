@@ -19,7 +19,6 @@ open class FragmentCommon : Fragment(){
         return view
     }
 
-
     // 启动activity 使用 mStartActivity(context,*::class.java)
     fun mStartActivity(cls: Class<*>) {
         context!!.startActivity(Intent(context, cls))
@@ -32,7 +31,6 @@ open class FragmentCommon : Fragment(){
         intent.putExtra("params", param)
         context!!.startActivity(intent)
     }
-
 
     // 启动activity 使用 mStartActivity(context,*::class.java)
     fun mStartActivity(cls: Class<*>, url: String, param: JSONObject) {
