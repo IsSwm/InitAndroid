@@ -16,7 +16,7 @@ class HeaderDemoActivity : BaseActivity() {
         // 退出activity
         setBackBtnFinish()
         // 右侧按钮事件
-        setBtnClick(View.OnClickListener {
+        setBtnClick("保存",View.OnClickListener {
             SwmToastUtils.showToast("我是顶部Demo演示")
         })
 

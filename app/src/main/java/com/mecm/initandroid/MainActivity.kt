@@ -2,6 +2,7 @@ package com.mecm.initandroid
 
 import android.content.Context
 import android.os.Bundle
+
 import com.mecm.initandroid.entity.BaseData
 import com.mecm.initandroid.fragment.first.FragmentFirst
 import com.mecm.initandroid.utils.SwmRxHttpUtils
@@ -48,7 +49,7 @@ class MainActivity : BaseActivity() {
 //        tabViewChildList.add(tabViewChild02)
 //        tabViewChildList.add(tabViewChild03)
 //        tabViewChildList.add(tabViewChild04)
-        tabView.setTabViewChild(tabViewChildList, supportFragmentManager)
+        mtabView.setTabViewChild(tabViewChildList, supportFragmentManager)
     }
 
 

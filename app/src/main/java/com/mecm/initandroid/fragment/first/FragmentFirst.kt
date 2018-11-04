@@ -39,7 +39,7 @@ class FragmentFirst : FragmentCommon() {
         homeAdapter.setOnItemClickListener { _, _, position ->
             when (position) {
                 //  头部Demo演示
-                POSITION_HEADER -> mStartActivity(context!!, HeaderDemoActivity::class.java)
+                POSITION_HEADER -> mStartActivity(HeaderDemoActivity::class.java)
             }
         }
 
