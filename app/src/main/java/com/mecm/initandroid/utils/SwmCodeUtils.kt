@@ -3,6 +3,7 @@
 //import android.widget.TextView
 //import com.mecm.art.entity.AddClassEt
 //import com.mecm.art.entity.BaseData
+//import com.mecm.initandroid.entity.BaseData
 //import io.reactivex.disposables.Disposable
 //
 //object SwmCodeUtils {

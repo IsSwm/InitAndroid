@@ -16,6 +16,14 @@ object SwmTextUtils {
         return SwmStringUtils.isEmpty(getText(textView))
     }
 
+    //    判断文本控件 是否为空  EditText调用也管用
+    fun isNullToast(textView: TextView, tip: String): Boolean {
+        if(isNull(textView)){
+            SwmToastUtils.showSingletonToast(tip+"不能为空!")
+        }
+        return isNull(textView)
+    }
+
     //    获取文本控件 的内容
     fun getText(textView: TextView): String {
         return textView.text.toString().trim { it <= ' ' }

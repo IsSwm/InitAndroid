@@ -50,6 +50,7 @@ class SwmRxHttpUtils {
                 if ("success" == baseData.status) {
                     swmRequestComListener!!.onNext(baseData)
                 } else {
+                    swmRequestComListener!!.onNextError()
                     //   显示服务器的错误信息
                     SwmToastUtils.showToast(baseData.message)
                 }
@@ -61,7 +62,7 @@ class SwmRxHttpUtils {
             override fun onError(e: Throwable) {
                 SwmToastUtils.showToast("未连接到服务器,错误信息：" + e.message)
                 mDisposable!!.dispose()
-                swmRequestComListener!!.onError(e)
+//                swmRequestComListener!!.onError(e)
             }
 
             /**
@@ -121,13 +122,11 @@ class SwmRxHttpUtils {
 
 
     interface SwmRequestComListener {
+
         fun onSubscribe(d: Disposable)
-
         fun onNext(baseData: BaseData)
-
-        fun onError(e: Throwable)
-
         fun onComplete()
+        fun onNextError()
     }
 
 
