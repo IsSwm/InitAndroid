@@ -64,7 +64,6 @@ class FragmentFirst : FragmentCommon() {
 
     }
 
-    //  关于更多的Adapter知识 参考于 大神的https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     class PopupAdapter(dataList: List<PopupItem>) : BaseQuickAdapter<PopupItem, BaseViewHolder>(R.layout.item_popup_list, dataList) {
         override fun convert(helper: BaseViewHolder, item: PopupItem) {
             helper.setText(R.id.textview, item.title)
