@@ -66,6 +66,11 @@ class SwmUIUtils {
             }
         }
 
+        //    获取 int
+        fun getInteger(id: Int): Int {
+            return context.resources.getInteger(id)
+        }
+
         //    根据Id 获取 颜色的 状态选择器
         fun getColorStateList(id: Int): ColorStateList {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
