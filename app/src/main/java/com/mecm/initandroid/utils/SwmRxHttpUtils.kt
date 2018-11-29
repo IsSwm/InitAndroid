@@ -19,6 +19,7 @@ import retrofit2.Response
 class SwmRxHttpUtils {
 
     private val mBaseDataObserver: Observer<BaseData>
+
     constructor()
 
     /**
@@ -38,7 +39,7 @@ class SwmRxHttpUtils {
              */
             override fun onSubscribe(d: Disposable) {
                 mDisposable = d
-                swmRequestComListener!!.onSubscribe(d)
+                if (swmRequestOnSubscribeListener != null) swmRequestOnSubscribeListener!!.onSubscribe(d)
             }
 
             /**
@@ -48,9 +49,13 @@ class SwmRxHttpUtils {
             override fun onNext(baseData: BaseData) {
                 //    如果 服务器 返回的  请求 状态码 等于success 代码有数据
                 if ("success" == baseData.status) {
-                    swmRequestComListener!!.onNext(baseData)
+                    if (swmRequestComListener != null) swmRequestComListener!!.onNext(baseData)
+
+                    if (swmRequestOnNextListener != null) swmRequestOnNextListener!!.onNext(baseData)
                 } else {
-                    swmRequestComListener!!.onNextError()
+                    if (swmRequestOnNextErrorListener != null) swmRequestOnNextErrorListener!!.onNextError(baseData)
+
+                    if (swmRequestComListener != null) swmRequestComListener!!.onNextError(baseData)
                     //   显示服务器的错误信息
                     SwmToastUtils.showToast(baseData.message)
                 }
@@ -70,7 +75,7 @@ class SwmRxHttpUtils {
              */
             override fun onComplete() {
                 mDisposable!!.dispose()
-                swmRequestComListener!!.onComplete()
+                if (swmRequestOnCompleteListener != null) swmRequestOnCompleteListener!!.onComplete()
             }
         }
 
@@ -101,7 +106,7 @@ class SwmRxHttpUtils {
     /**
      *  下载文件
      */
-    fun downloadFile(url:String): SwmRxHttpUtils {
+    fun downloadFile(url: String): SwmRxHttpUtils {
         AppContext.apiService!!.downloadFile(url).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
                 val byteStream = response!!.body()!!.byteStream()
@@ -119,14 +124,31 @@ class SwmRxHttpUtils {
 
     //    设置 请求完成 的 接口。
     private var swmRequestComListener: SwmRequestComListener? = null
+    private var swmRequestOnNextListener: SwmRequestOnNextListener? = null
+    private var swmRequestOnNextErrorListener: SwmRequestOnNextErrorListener? = null
+    private var swmRequestOnCompleteListener: SwmRequestOnCompleteListener? = null
+    private var swmRequestOnSubscribeListener: SwmRequestOnSubscribeListener? = null
 
 
     interface SwmRequestComListener {
-
-        fun onSubscribe(d: Disposable)
         fun onNext(baseData: BaseData)
+        fun onNextError(baseData: BaseData)
+    }
+
+    interface SwmRequestOnNextListener {
+        fun onNext(baseData: BaseData)
+    }
+
+    interface SwmRequestOnNextErrorListener {
+        fun onNextError(baseData: BaseData)
+    }
+
+    interface SwmRequestOnCompleteListener {
         fun onComplete()
-        fun onNextError()
+    }
+
+    interface SwmRequestOnSubscribeListener {
+        fun onSubscribe(d: Disposable)
     }
 
 

@@ -21,17 +21,10 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val swmRxHttpUtils = SwmRxHttpUtils(object : SwmRequestComListener {
-            override fun onSubscribe(d: Disposable) {
-
+            override fun onNextError(baseData: BaseData) {
             }
 
             override fun onNext(baseData: BaseData) {
-            }
-
-            override fun onError(e: Throwable) {
-            }
-
-            override fun onComplete() {
             }
         })
         initArgs()
