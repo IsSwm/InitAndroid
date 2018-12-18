@@ -9,7 +9,7 @@ android {
     buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.mecm.initandroid"
-        minSdkVersion 14
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
@@ -60,16 +60,40 @@ dependencies {
 //    https://github.com/crazyandcoder/citypicker
     implementation 'liji.library.dev:citypickerview:3.1.12'
 
+    //   图片
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+    //    https://github.com/wasabeef/glide-transformations   圆角
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
+
+    // 圆形头像
+//    Glide.with(this@MainActivity).load(data.img)
+//            .apply(RequestOptions().circleCrop())
+//            .into(home_slid_iv)
+    // 圆角
+    //    Glide.with(mContext).load(item.photo)
+    //            .apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(SwmUIUtils.getInteger(R.integer.ROUNDED_CORNERS),
+    //            SwmUIUtils.getInteger(R.integer.ROUNDED_CORNERS_MARGIN))))
+    //            .into(helper.getView(R.id.item_brand_company_iv))
 
 //    图片选择器
 //    implementation 'cn.finalteam.rxgalleryfinal:library:1.0.9'
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
 
+    //    https://github.com/hongyangAndroid/FlowLayout  流布局
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+
+
+    //    https://github.com/scwang90/SmartRefreshLayout  下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+
+    // https://github.com/koral--/android-gif-drawable   gif 加载
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.16'//一个开源gif控件
 
     // 权限
     implementation 'com.hjq:xxpermissions:5.0'
-//    https://github.com/wasabeef/glide-transformations
-    implementation 'jp.wasabeef:glide-transformations:3.3.0'
 
 
     // https://github.com/Justson/AgentWeb

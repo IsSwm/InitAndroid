@@ -2,14 +2,17 @@ package com.mecm.initandroid.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.net.ConnectivityManager
+import android.net.Uri
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.SystemClock
 import android.provider.Settings
 import android.telephony.TelephonyManager
+import android.text.TextUtils
 import com.mecm.initandroid.AppContext
 import java.io.BufferedReader
 import java.io.File
@@ -45,6 +48,45 @@ object SwmSystemUtils {
     private val appInfo: ApplicationInfo
         @Throws(PackageManager.NameNotFoundException::class)
         get() = packageManager.getApplicationInfo(AppContext.context!!.packageName, 0)
+
+
+    /**
+     * 启动到应用商店app详情界面
+     *
+     * @param appPkg    目标App的包名
+     * @param marketPkg 应用商店包名 ,如果为""则由系统弹出应用商店列表供用户选择,否则调转到目标市场的应用详情界面，某些应用商店可能会失败
+     */
+    fun launchAppDetail(context: Context, appPkg: String, marketPkg: String) {
+        try {
+            if (TextUtils.isEmpty(appPkg)) return
+
+            val uri = Uri.parse("market://details?id=$appPkg")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            if (!TextUtils.isEmpty(marketPkg)) {
+                intent.setPackage(marketPkg)
+            }
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    /**
+     * 启动到应用商店app详情界面
+     */
+    fun launchAppDetail(context: Context) {
+        try {
+            var appPkg = AppContext.context!!.packageName
+            val uri = Uri.parse("market://details?id=$appPkg")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            SwmLogUtils.e(e.message.toString())
+            e.printStackTrace()
+        }
+    }
 
     //    获取包管理者
     private val packageManager: PackageManager
