@@ -89,12 +89,8 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
 
-    // https://github.com/koral--/android-gif-drawable   gif 加载
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.16'//一个开源gif控件
-
     // 权限
     implementation 'com.hjq:xxpermissions:5.0'
-
 
     // https://github.com/Justson/AgentWeb
     implementation 'com.just.agentweb:agentweb:4.0.2' // (必选)
