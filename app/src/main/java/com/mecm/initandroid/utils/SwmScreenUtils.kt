@@ -63,7 +63,7 @@ object SwmScreenUtils {
         val bmp = view.drawingCache
         val width = getScreenW()
         val height = getScreenH()
-        var bp: Bitmap? = null
+        val bp: Bitmap?
         bp = Bitmap.createBitmap(bmp, 0, 0, width, height)
         view.destroyDrawingCache()
         return bp
@@ -86,7 +86,7 @@ object SwmScreenUtils {
         val statusBarHeight = frame.top
         val width = getScreenW()
         val height = getScreenH()
-        var bp: Bitmap? = null
+        val bp: Bitmap?
         bp = Bitmap.createBitmap(bmp, 0, statusBarHeight, width, height - statusBarHeight)
         view.destroyDrawingCache()
         return bp

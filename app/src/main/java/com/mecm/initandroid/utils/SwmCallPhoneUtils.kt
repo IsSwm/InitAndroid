@@ -18,7 +18,7 @@ object SwmCallPhoneUtils {
     }
 
     //    跳转到拨号界面
-    fun toCallPhone(activity: Activity, phone: String) {
+    fun toCallPhone(activity: Activity) {
         val dialIntent = Intent(Intent.ACTION_CALL_BUTTON)//跳转到拨号界面
         activity.startActivity(dialIntent)
     }
