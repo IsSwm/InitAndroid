@@ -58,12 +58,11 @@ object SwmCityUtils {
 
         mPicker!!.setConfig(cityConfig)
 
-        var mCity = CityDetail("", "", "", "", "", "")
 
         //监听选择点击事件及返回结果
         mPicker!!.setOnCityItemClickListener(object : OnCityItemClickListener() {
             override fun onSelected(province: ProvinceBean?, city: CityBean?, district: DistrictBean?) {
-
+                var mCity = CityDetail("", "", "", "", "", "")
                 //省份
                 if (province != null) {
                     mCity.mProvince = province.name
