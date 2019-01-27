@@ -1,4 +1,4 @@
-package com.mecm.initandroid.views
+package com.mecm.initandroid.views.pop
 
 import android.animation.ValueAnimator
 import android.app.Activity

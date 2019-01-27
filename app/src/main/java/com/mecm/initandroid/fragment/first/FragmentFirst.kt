@@ -15,7 +15,7 @@ import com.mecm.initandroid.entity.BaseData
 import com.mecm.initandroid.fragment.FragmentCommon
 import com.mecm.initandroid.fragment.first.adapter.HomeAdapter
 import com.mecm.initandroid.fragment.first.adapter.HomeItem
-import com.mecm.initandroid.views.BasePopupWindow
+import com.mecm.initandroid.views.pop.BasePopupWindow
 import kotlinx.android.synthetic.main.fragment_first.view.*
 import kotlinx.android.synthetic.main.global_header.view.*
 

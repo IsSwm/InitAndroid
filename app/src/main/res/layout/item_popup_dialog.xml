@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/m_w"
+    android:background="@color/transparent">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        style="@style/m_w.vertical_ll"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/item_popup_dialog_title"
+            style="@style/w_w"
+            android:layout_marginTop="40px"
+            android:textColor="@color/c444444"
+            android:textSize="33px" />
+
+        <View
+            style="@style/divider_view"
+            android:layout_marginTop="40px"
+            android:background="@color/cDCDDE0" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            style="@style/m_w"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/item_popup_dialog_cancel"
+                style="@style/w_w"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20px"
+                android:text="取消"
+                android:textColor="@color/c3377F6"
+                android:textSize="35px" />
+
+            <View
+                style="@style/divider_view"
+                android:layout_width="2px"
+                android:layout_height="match_parent"
+                android:background="@color/cDCDDE0" />
+
+            <TextView
+                android:id="@+id/item_popup_dialog_confirm"
+                style="@style/w_w"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20px"
+                android:text="确认"
+                android:textColor="@color/cE8483C"
+                android:textSize="35px" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoFrameLayout>
