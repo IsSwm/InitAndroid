@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.animation.BounceInterpolator;
 
+import com.mecm.initandroid.utils.SwmScreenUtils;
+import com.mecm.initandroid.utils.SwmUIUtils;
 import com.zhy.autolayout.AutoFrameLayout;
 
 /**
@@ -24,13 +26,22 @@ public class MoveView extends AutoFrameLayout {
         this(context, attrs, 0);
     }
 
+
+    private int screenWidth;
+    private int screenHeight;
+
     public MoveView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        screenWidth = SwmScreenUtils.INSTANCE.getScreenW();
+        screenHeight = SwmScreenUtils.INSTANCE.getScreenH();
     }
 
 
     private float movex = 0;
     private float movey = 0;
+
+    private int firstX;
+    private int firstY;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -63,6 +74,14 @@ public class MoveView extends AutoFrameLayout {
                         ObjectAnimator.ofFloat(this, "alpha", 0.5f, 1f)
                 );
                 setUp.start();
+
+                // 超出屏幕右边
+                if ((getX() + getWidth()) > (screenWidth - 20)) {
+                    setX(firstX);
+                    setY(firstY - SwmUIUtils.Companion.dp2px(150));
+                    startInAnmin(2);
+                }
+
                 //避免滑出触发点击事件
                 if ((int) (event.getRawX() - movex) != 0
                         || (int) (event.getRawY() - movey) != 0) {

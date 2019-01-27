@@ -14,13 +14,13 @@
             android:id="@+id/item_popup_dialog_title"
             style="@style/w_w"
             android:layout_marginTop="40px"
-            android:textColor="@color/c444444"
+            android:textColor="@color/black"
             android:textSize="33px" />
 
         <View
             style="@style/divider_view"
             android:layout_marginTop="40px"
-            android:background="@color/cDCDDE0" />
+            android:background="@color/black" />
 
         <com.zhy.autolayout.AutoLinearLayout
             style="@style/m_w"
@@ -33,14 +33,14 @@
                 android:gravity="center"
                 android:padding="20px"
                 android:text="取消"
-                android:textColor="@color/c3377F6"
+                android:textColor="@color/black"
                 android:textSize="35px" />
 
             <View
                 style="@style/divider_view"
                 android:layout_width="2px"
                 android:layout_height="match_parent"
-                android:background="@color/cDCDDE0" />
+                android:background="@color/black" />
 
             <TextView
                 android:id="@+id/item_popup_dialog_confirm"
@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:padding="20px"
                 android:text="确认"
-                android:textColor="@color/cE8483C"
+                android:textColor="@color/black"
                 android:textSize="35px" />
         </com.zhy.autolayout.AutoLinearLayout>
 

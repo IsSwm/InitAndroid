@@ -24,4 +24,66 @@
         <item name="android:background">@color/gray</item>
     </style>
 
+    <!--自适应-->
+    <style name="w_w">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!--宽度match-->
+    <style name="m_w" parent="w_w">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+    <!--宽度match-->
+    <style name="m_m" parent="m_w">
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <!--垂直的linearLayout-->
+    <style name="w_w.vertical_ll" parent="w_w">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <!--垂直的linearLayout-->
+    <style name="m_w.vertical_ll">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <!--垂直的linearLayout-->
+    <style name="m_m.vertical_ll">
+        <item name="android:orientation">vertical</item>
+    </style>
+    <!--垂直的linearLayout居中-->
+    <style name="m_w.vertical_ll.center">
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <!--水平的linearLayout-->
+    <style name="w_w.horizontal_ll" parent="w_w">
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <!--水平的linearLayout-->
+    <style name="m_w.horizontal_ll">
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <!--水平的linearLayout-->
+    <style name="w_w.horizontal_ll.center">
+        <item name="android:gravity">center</item>
+    </style>
+    <!--水平的linearLayout-->
+    <style name="m_w.horizontal_ll.center">
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <!-- 内部居中 -->
+    <style name="w_w.gravity_center" parent="w_w">
+        <item name="android:gravity">center</item>
+    </style>
+    <!-- 内部居中 -->
+    <style name="m_w.gravity_center" parent="m_w">
+        <item name="android:gravity">center</item>
+    </style>
+    <!-- 内部垂直居中 -->
+    <style name="w_w.gravity_vertical" parent="w_w">
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <!-- 内部垂直居中 -->
+    <style name="m_w.gravity_vertical">
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
 </resources>

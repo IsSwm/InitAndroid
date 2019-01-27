@@ -12,8 +12,9 @@ import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.google.gson.Gson;
-import com.mecm.cmyx.utils.SwmToastUtils;
-import com.mecm.cmyx.utils.SwmUIUtils;
+import com.mecm.cmyx.utils.city.CityDetail;
+import com.mecm.initandroid.utils.SwmToastUtils;
+import com.mecm.initandroid.utils.SwmUIUtils;
 
 import org.json.JSONArray;
 
