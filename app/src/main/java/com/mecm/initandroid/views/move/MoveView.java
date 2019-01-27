@@ -81,7 +81,11 @@ public class MoveView extends AutoFrameLayout {
                     setY(firstY - SwmUIUtils.Companion.dp2px(150));
                     startInAnmin(2);
                 }
-
+                // 超出屏幕下边
+                int minH = SwmUIUtils.Companion.dp2px(100);
+                if (((int) event.getRawY()) > (screenHeight - minH)) {
+                    setY(firstY);
+                }
                 //避免滑出触发点击事件
                 if ((int) (event.getRawX() - movex) != 0
                         || (int) (event.getRawY() - movey) != 0) {
