@@ -91,4 +91,17 @@ dependencies {
 
     // https://github.com/Justson/AgentWeb
     implementation 'com.just.agentweb:agentweb:4.0.2' // (必选)
+
+    // https://github.com/koral--/android-gif-drawable    gif动图
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.16'
+
+    //    https://github.com/zrunker/ZProductInfo  产品详情页面
+    implementation 'com.github.zrunker:ZViewPager:v1.0.4'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    //    https://github.com/hongyangAndroid/MagicViewPager  轮播动画
+    implementation 'com.zhy:magic-viewpager:1.0.1'
+
+    //  https://github.com/H07000223/FlycoTabLayout/blob/master/README_CN.md  头部tab
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 }
