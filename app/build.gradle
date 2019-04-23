@@ -9,7 +9,7 @@ android {
     buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.mecm.initandroid"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
