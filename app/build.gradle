@@ -57,6 +57,10 @@ dependencies {
     implementation 'com.zhy:autolayout:1.4.5'
 
 
+    // https://github.com/leolin310148/ShortcutBadger 角标
+    implementation 'me.leolin:ShortcutBadger:1.1.22@aar'
+
+
     //   图片
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
@@ -104,4 +108,14 @@ dependencies {
 
     //  https://github.com/H07000223/FlycoTabLayout/blob/master/README_CN.md  头部tab
     implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+
+    // https://github.com/woxingxiao/XEditText  禁止输入表情
+    implementation 'com.xw.repo:xedittext:2.1.0@aar'
+
+    // websocket 通信 https://www.jianshu.com/p/7b919910c892
+    implementation "org.java-websocket:Java-WebSocket:1.4.0"
+
+    // 预览图片 https://github.com/yangchaojiang/ZoomPreviewPicture
+    implementation 'com.ycjiang:ImagePreview:2.2.2'
 }
