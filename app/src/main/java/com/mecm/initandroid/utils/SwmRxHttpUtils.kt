@@ -2,7 +2,7 @@ package com.mecm.initandroid.utils
 
 import com.mecm.initandroid.AppContext
 import com.mecm.initandroid.entity.BaseData
-import com.mecm.moneybag.utils.FileUtil
+import com.mecm.moneybag.utils.SwmFileUtil
 
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -111,7 +111,7 @@ class SwmRxHttpUtils {
             override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
                 val byteStream = response!!.body()!!.byteStream()
                 val totalLength = response.body()!!.contentLength()
-                FileUtil().write2SDFromInput("", SwmSystemUtils.appVersion + ".apk", byteStream, totalLength)
+                SwmFileUtil().write2SDFromInput("", SwmSystemUtils.appVersion + ".apk", byteStream, totalLength)
 
             }
 

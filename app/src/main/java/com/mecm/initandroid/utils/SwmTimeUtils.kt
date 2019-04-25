@@ -10,6 +10,16 @@ import java.util.*
  */
 
 object SwmTimeUtils {
+
+    /**
+    * 获取 十位数的时间戳
+    */
+    fun getTimeTen(): String {
+        var timeStampSec = System.currentTimeMillis() / 1000
+        return String.format("%010d", timeStampSec)
+    }
+
+
     /**
      * 时间戳转为时间(年月日，时分秒)
 

@@ -4,7 +4,7 @@ import android.os.Environment
 import com.mecm.initandroid.utils.SwmLogUtils
 import java.io.*
 
-class FileUtil {
+class SwmFileUtil {
     var sdpath: String? = null
 
     constructor() {
@@ -36,6 +36,20 @@ class FileUtil {
         val dir = File(sdpath!! + dirName)
         dir.mkdir()
         return dir
+    }
+
+    companion object {
+        /**
+         * 在SD卡上创建目录
+         * @param dirName 目录名字
+         * @return 文件目录
+         */
+        fun createDirBy(dirName: String): File {
+            val dir = File(dirName)
+            dir.mkdir()
+            return dir
+        }
+
     }
 
     /**
