@@ -116,6 +116,10 @@ dependencies {
     // websocket 通信 https://www.jianshu.com/p/7b919910c892
     implementation "org.java-websocket:Java-WebSocket:1.4.0"
 
+
+    // 手势缩放动画 https://github.com/chrisbanes/PhotoView
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+
     // 预览图片 https://github.com/yangchaojiang/ZoomPreviewPicture
     implementation 'com.ycjiang:ImagePreview:2.2.2'
 }
