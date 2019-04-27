@@ -1,8 +1,12 @@
 package com.mecm.initandroid.utils
 
 import android.app.Activity
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
@@ -105,7 +109,7 @@ object SwmImageUtils {
 
     fun bitmapToBlob(bmp: Bitmap): ByteArray? {
         val os = ByteArrayOutputStream()
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, os)
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, os)
         return os.toByteArray()
     }
 
@@ -114,17 +118,17 @@ object SwmImageUtils {
      * @return Bitmap
      * 根据图片url获取图片对象
      */
-    fun getBitMBitmap(urlpath: String): Bitmap? {
+    fun getBitMBitmap(context: Context, urlpath: String): Bitmap? {
         var map: Bitmap? = null
         try {
-            val url = URL(urlpath)
-            val conn = url.openConnection()
-            conn.connect()
-            val `in`: InputStream
-            `in` = conn.getInputStream()
-            map = BitmapFactory.decodeStream(`in`)
+            Glide.with(context).asBitmap().load(urlpath).into(object : SimpleTarget<Bitmap>() {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    map = resource
+                }
+            })
         } catch (e: IOException) {
             e.printStackTrace()
+            SwmLogUtils.e("getBitMBitmapError: = " + e.message)
         }
 
         return map

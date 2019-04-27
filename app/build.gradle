@@ -78,6 +78,13 @@ dependencies {
     //            SwmUIUtils.getInteger(R.integer.ROUNDED_CORNERS_MARGIN))))
     //            .into(helper.getView(R.id.item_brand_company_iv))
 
+    //  获取 bitmap
+//    Glide.with(context).asBitmap().load(urlpath).into(object : SimpleTarget<Bitmap>() {
+//        override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+//            map = resource
+//        }
+//    })
+
 //    图片选择器
 //    implementation 'cn.finalteam.rxgalleryfinal:library:1.0.9'
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
