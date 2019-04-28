@@ -127,6 +127,6 @@ dependencies {
     // 手势缩放动画 https://github.com/chrisbanes/PhotoView
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 
-    // 预览图片 https://github.com/yangchaojiang/ZoomPreviewPicture
-    implementation 'com.ycjiang:ImagePreview:2.2.2'
+    //    https://github.com/Curzibn/Luban
+    implementation 'top.zibin:Luban:1.1.8'
 }
