@@ -3,7 +3,6 @@ package com.mecm.initandroid.utils
 import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
@@ -12,10 +11,11 @@ import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
 import com.mecm.initandroid.R
 import com.mecm.moneybag.utils.SwmFileUtil
+import top.zibin.luban.Luban
+import top.zibin.luban.OnCompressListener
 import java.io.ByteArrayOutputStream
+import java.io.File
 import java.io.IOException
-import java.io.InputStream
-import java.net.URL
 
 
 object SwmImageUtils {
@@ -113,26 +113,38 @@ object SwmImageUtils {
         return os.toByteArray()
     }
 
-    /**通过图片url生成Bitmap对象
+    /**
+     * 此操作是异步。 mFile永远为空，可以复制到相应代码处操作
      * @param urlpath
-     * @return Bitmap
+     * @return File
      * 根据图片url获取图片对象
      */
-    fun getBitMBitmap(context: Context, urlpath: String): Bitmap? {
-        var map: Bitmap? = null
+    fun getFileByUrl(context: Context, urlpath: String) {
         try {
-            Glide.with(context).asBitmap().load(urlpath).into(object : SimpleTarget<Bitmap>() {
-                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                    map = resource
+            Glide.with(context).asFile().load(urlpath).into(object : SimpleTarget<File>() {
+                override fun onResourceReady(resource: File, transition: Transition<in File>?) {
+                    // 压缩文件
+                    Luban.with(context)
+                            .load(resource)
+                            .ignoreBy(100)
+                            .setCompressListener(object : OnCompressListener {
+                                override fun onStart() {
+                                }
+
+                                override fun onSuccess(file: File) {
+                                    SwmLogUtils.e("file.path= " + file.path)
+//                                    DbUtils.updateMsgProImage(context, msgID, file.path)
+                                }
+
+                                override fun onError(e: Throwable) {
+                                }
+                            }).launch()
                 }
             })
         } catch (e: IOException) {
             e.printStackTrace()
-            SwmLogUtils.e("getBitMBitmapError: = " + e.message)
+            SwmLogUtils.e("getFileByUrl: = " + e.message)
         }
-
-        return map
     }
-
 
 }
