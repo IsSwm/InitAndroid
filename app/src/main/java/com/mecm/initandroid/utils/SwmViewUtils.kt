@@ -35,15 +35,15 @@ object SwmViewUtils {
      * @param heightPercent 高度占整个屏幕高度几份，0为wrap_content如，占屏幕1/2，则写2
      */
 
-    fun setViewWidthOrHeight(view: View, widthPercent: Int, heightPercent: Int) {
+    fun setViewWidthOrHeight(view: View, widthPercent: Float, heightPercent: Float) {
         val params = view.layoutParams
-        if (widthPercent != 0) {
-            params.width = SwmScreenUtils.getScreenW() / widthPercent
+        if (widthPercent != 0f) {
+            params.width = (SwmScreenUtils.getScreenW() / widthPercent).toInt()
         } else {
             params.width = ViewGroup.LayoutParams.WRAP_CONTENT
         }
-        if (heightPercent != 0) {
-            params.height = SwmScreenUtils.getScreenH() / heightPercent
+        if (heightPercent != 0f) {
+            params.height = (SwmScreenUtils.getScreenH() / heightPercent)
         } else {
             params.height = ViewGroup.LayoutParams.WRAP_CONTENT
         }
@@ -58,13 +58,13 @@ object SwmViewUtils {
      * @param widthPercent  基于宽度的几分之几
      * @param heightPercent 基于高度的几分之几
      */
-    fun setViewHeightAndWidth(view: View, widthPercent: Float, heightPercent: Int) {
+    fun setViewHeightAndWidth(view: View, widthPercent: Float, heightPercent: Float) {
         val params = view.layoutParams
         if (widthPercent != 0f) {
             params.width = (SwmScreenUtils.getScreenW() / widthPercent).toInt()
             params.height = params.width
-        } else if (heightPercent != 0) {
-            params.height = SwmScreenUtils.getScreenH() / heightPercent
+        } else if (heightPercent != 0f) {
+            params.height = (SwmScreenUtils.getScreenH() / heightPercent).toInt()
             params.width = params.height
         }
         view.layoutParams = params
