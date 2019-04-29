@@ -43,7 +43,7 @@ object SwmViewUtils {
             params.width = ViewGroup.LayoutParams.WRAP_CONTENT
         }
         if (heightPercent != 0f) {
-            params.height = (SwmScreenUtils.getScreenH() / heightPercent)
+            params.height = (SwmScreenUtils.getScreenH() / heightPercent).toInt()
         } else {
             params.height = ViewGroup.LayoutParams.WRAP_CONTENT
         }
