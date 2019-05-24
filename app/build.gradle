@@ -68,6 +68,9 @@ dependencies {
     //    https://github.com/wasabeef/glide-transformations   圆角
     implementation 'jp.wasabeef:glide-transformations:3.3.0'
 
+//    Git 图片
+//    Glide.with(mContext).asGif().load(file).apply(requestOptions).into(leftGifImg)
+
     // 圆形头像
 //    Glide.with(this@MainActivity).load(data.img)
 //            .apply(RequestOptions().circleCrop())
